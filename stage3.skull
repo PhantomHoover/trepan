@@ -1,0 +1,56 @@
+1318 mov mem[0], 0x18
+1320 mov mem[4], [mem[0]+rHeap]
+1324 cmp mem[4], 0xffffffff
+132c jeq 0x13b4
+1334 and mem[4], 0x7fffffff
+133c cmp mem[4], 0x0
+1344 jeq 0x13b4
+134c mov mem[12], 0x0
+1354 mov mem[0], 0x18
+135c add [mem[0]+rHeap], 0x4
+1364 cmp [mem[0]+rHeap], 0xfb0
+136c ja 0x1494
+1374 mov mem[0], [mem[0]+rHeap]
+1378 add mem[0], 0x40
+1380 mov mem[4], [mem[0]]
+1384 and mem[4], 0xff00ff
+138c or mem[4], 0x4000400
+1394 mov [mem[0]], mem[4]
+1398 add mem[12], 0x1
+13a0 cmp mem[12], 0x14
+13a8 jbe 0x1354
+13b0 ret
+
+
+13b4 mov [mem[0]+rHeap], 0xc
+13bc mov mem[16], 0x1cf0
+13c4 add mem[16], 0x4400
+13cc mov mem[4], mem[16]
+13d0 and mem[4], 0xf
+13d8 mov mem[12], 0x10
+13e0 sub mem[12], mem[4]
+13e4 and mem[12], 0xf
+13ec add mem[16], mem[12]
+13f0 mov mem[4], 0x0
+13f8 add mem[16], 0x10
+1400 mov [mem[4]+rHeap], mem[16]
+1404 mov huge mem[32], huge 0xf4692e3b161a749de16b9ea211ae33ea
+1418 mov huge [mem[16]], huge 0xd4490e1b361a13f38804d98261cb56a1
+142c xor huge [mem[16]], huge mem[32]
+1430 add mem[16], 0x10
+1438 mov huge [mem[16]], huge 0xd4490e1b363a54bdc14bbe8ce85613ca
+144c xor huge [mem[16]], huge mem[32]
+1450 add mem[16], 0x70
+1458 mov huge [mem[16]], huge 0x20202020202020202020202020202020
+146c mov mem[0], 0x4
+1474 mov [mem[0]+rHeap], 0x80
+147c add byte mem[0], byte 0x4
+1480 mov byte [mem[0]+rHeap], byte 0xff
+1484 mov byte mem[0], byte 0x1c
+1488 mov [mem[0]+rHeap], 0x1318
+1490 ret
+
+
+1494 mov mem[0], 0x1c
+149c mov [mem[0]+rHeap], 0x0
+14a4 ret

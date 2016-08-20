@@ -1,0 +1,62 @@
+00a4 mov mem[8], mem[0]
+00a8 and mem[8], 0xff000000
+00b0 mov mem[4], 0x40
+00b8 or [mem[4]], mem[8]
+00bc mov mem[0], [mem[4]]
+00c0 and mem[0], 0xff000000
+00c8 ret
+
+
+00e4 mov mem[0], 0x20000000
+00ec call 0xa4, 0
+00f4 ret
+
+
+0260 mov mem[12], mem[0]
+0264 shl mem[12], 1
+0268 mov mem[16], mem[4]
+026c mul mem[16], 0xa0
+0274 add mem[12], mem[16]
+0278 add mem[12], 0x1
+0280 mov byte [mem[12]+rText], byte mem[9]
+0284 ret
+
+
+1624 mov mem[0], 0x18
+162c cmp [mem[0]+rHeap], 0x0
+1634 jne 0x1738
+163c mov mem[4], 0x19
+1644 mov mem[0], 0x42
+164c mov short mem[8], short 0x701
+1654 call 0x260, 0
+165c add mem[0], 0x1
+1664 cmp mem[0], 0x45
+166c jbe 0x164c
+1674 mov mem[0], 0x3e
+167c mov short mem[8], short 0x801
+1684 call 0x260, 0
+168c add mem[0], 0x1
+1694 cmp mem[0], 0x40
+169c jbe 0x167c
+16a4 sub mem[4], 0x1
+16ac cmp mem[4], 0x0
+16b4 jge 0x1644
+16bc mov mem[16], 0x1cf0
+16c4 add mem[16], 0x4400
+16cc mov mem[4], mem[16]
+16d0 and mem[4], 0xf
+16d8 mov mem[12], 0x10
+16e0 sub mem[12], mem[4]
+16e4 and mem[12], 0xf
+16ec add mem[16], mem[12]
+16f0 add mem[16], 0x30
+16f8 xor mem[0], mem[0]
+16fc mov [mem[0]+rHeap], mem[16]
+1700 add mem[0], 0x4
+1708 mov [mem[0]+rHeap], 0x60
+1710 add mem[0], 0x4
+1718 mov [mem[0]+rHeap], 0xff
+1720 call 0xe4, 0
+1728 mov mem[0], 0x1c
+1730 mov [mem[0]+rHeap], 0x1a9c
+1738 ret
