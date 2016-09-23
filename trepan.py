@@ -108,7 +108,7 @@ def formatBlock(addr):
     labels = [l for l in labels if not addr <= l <= i]
     return (labels, listing)
 
-# recursively runs formatBlock on all source accessible form the initial address
+# recursively runs formatBlock on all source accessible from the initial address
 def formatBlocks(addr):
     blocks = {addr}
     listings = {}
